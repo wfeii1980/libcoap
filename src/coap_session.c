@@ -478,6 +478,8 @@ void coap_session_disconnected(coap_session_t *session, coap_nack_reason_t reaso
     session->state = COAP_SESSION_STATE_NONE;
 
   session->con_active = 0;
+  session->last_ping = 0;
+  session->last_pong = 0;
 
   if (session->partial_pdu) {
     coap_delete_pdu(session->partial_pdu);
